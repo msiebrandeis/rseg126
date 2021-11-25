@@ -11,7 +11,7 @@
     <path id="the_sieve.classpath">
         <pathelement location="bin"/>
     </path>
-    <path id="run.sieve.classpath">
+    <path id="run.Sieve.classpath">
         <path refid="the_sieve.classpath"/>
     </path>
     <target name="init">
@@ -51,8 +51,8 @@
         <antcall target="build"/>
     </target>
     <target name="sieve">
-        <java classname="the_sieve.sieve" failonerror="true" fork="yes">
-            <classpath refid="run.sieve.classpath"/>
+        <java classname="the_sieve.Sieve" failonerror="true" fork="yes">
+            <classpath refid="run.Sieve.classpath"/>
         </java>
     </target>
 </project>
