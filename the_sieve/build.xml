@@ -9,6 +9,19 @@
 	<property name="debuglevel" value="source,lines,vars" />
 	<property name="target" value="11" />
 	<property name="source" value="11" />
+	<property name="src.dir" location="src" />
+	<property name="test.dir" location="src" />
+	<property name="test.report.dir" location="src" />
+	<property name="build.dir" location="bin" />
+	<property name="build.test.dir" location="bin" />
+
+	<path id="junit.class.path">
+		<pathelement location="C:\Users\User\.p2\pool\plugins\org.junit_4.13.0.v20200204-1500.jar" />
+		<pathelement location="C:\Users\User\.p2\pool\plugins\org.hamcrest.core_1.3.0.v20180420-1519.jar" />
+
+		<pathelement location="${build.dir}" />
+	</path>
+
 	<path id="the_sieve.classpath">
 		<pathelement location="bin" />
 	</path>
@@ -56,10 +69,20 @@
 			<classpath refid="run.Sieve.classpath" />
 		</java>
 	</target>
-	<javac srcdir="src/" destdir="src/" debug="true" includeantruntime="true">
-		<classpath>
-			<path id="org.junit" location="C:/Users\User/.p2/pool/plugins/org.junit.jupiter.api_5.7.1.v20210222-1948.jar" />
-			<!-- not sure if you need this -->
-		</classpath>
-	</javac>
+
+	<target name="junit">
+		<junit printsummary="on" fork="true" haltonfailure="yes">
+			<classpath refid="junit.class.path" />
+			<classpath>
+				<pathelement location="${build.test.dir}" />
+			</classpath>
+			
+			<test name="the_sieve.SieveTest" 
+					haltonfailure="no" todir="${test.report.dir}">
+					<formatter type="plain" />
+					<formatter type="xml" />
+				</test>
+		</junit>
+
+	</target>
 </project>
