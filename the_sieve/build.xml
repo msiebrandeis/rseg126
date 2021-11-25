@@ -71,8 +71,8 @@
 	</target>
 
 	<target name="junit">
-		<junit printsummary="on" fork="true" haltonfailure="yes">
-			<classpath refid="junit.class.path" />
+		<junit printsummary="on" fork="true" haltonfailure="yes" errorProperty="test.failed" failureProperty="test.failed" logfailedtests="yes">
+			<classpath refid="junit.class.path"  />
 			<classpath>
 				<pathelement location="${build.test.dir}" />
 			</classpath>
@@ -83,6 +83,7 @@
 					<formatter type="xml" />
 				</test>
 		</junit>
+		<fail message="Test failed. Please see report." if="test.failed" />
 
 	</target>
 </project>
