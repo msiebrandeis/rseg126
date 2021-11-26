@@ -71,7 +71,7 @@
 	</target>
 
 	<target name="junit">
-		<junit printsummary="on" fork="true" haltonfailure="yes" errorProperty="test.failed" failureProperty="test.failed" logfailedtests="yes">
+		<junit printsummary="on" fork="true" haltonfailure="no" errorProperty="test.failed" failureProperty="test.failed" logfailedtests="yes">
 			<classpath refid="junit.class.path"  />
 			<classpath>
 				<pathelement location="${build.test.dir}" />
